@@ -1,4 +1,7 @@
 <p>Accent Core Plus R Matchup Organizer<p>
+
+<img src="https://i.imgur.com/2ww87YZ.png">
+
 <p>A super simple script for organizing your replay folder for GGXXAC+R with ease<p>
 
 # Instructions
@@ -15,8 +18,8 @@
 
 ## Using it
 
-1. Place the release folder or script anywhere you want
-2. Run the binary orscript and type the path where your replays are saved( usually at "Documents/ARC SYSTEM WORKS/GGXXAC/Replays")
+1. Place the release folder or script anywhere you want and create a shortcut to desktop or something
+2. Run it should automatically find where your replays are saved, if not they are usually at "Documents/ARC SYSTEM WORKS/GGXXAC/Replays"
 3. Insert your user name on GGXXAC+R do not misstype this >:( (it might break)
 4. Click submit
 5. Done
