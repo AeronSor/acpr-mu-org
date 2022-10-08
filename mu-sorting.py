@@ -24,14 +24,12 @@ if __name__ == "__main__":
 
             # Get path for either Linux or Windows
             if os.name == "posix":
-                self.os_path = ""
                 self.replay_path = os.path.expanduser('~')
                 self.replay_path += "/.steam/steam/steamapps/compatdata/348550/pfx/drive_c/users/steamuser/Documents/ARC SYSTEM WORKS/GGXXAC/Replays/"
 
             if os.name == "nt":
-                self.os_path = " \\ "
                 self.replay_path = os.path.expanduser('~')
-                self.replay_path += "\\Documents\\ARC SYSTEM WORKS\\GGXXAC\\Replays"
+                self.replay_path += "\\Documents\\ARC SYSTEM WORKS\\GGXXAC\\Replays\\"
 
 
             # Window properties
@@ -72,15 +70,15 @@ if __name__ == "__main__":
 
 
             # User Name Entry
-            self.name_var = tk.StringVar()
+            self.user_name = tk.StringVar()
 
             # Get username from file automatically
             if os.path.exists('player.txt'):
                 file_usr_name = open('player.txt', 'r')
                 file_usr_name = file_usr_name.read()
-                self.name_var.set(file_usr_name) 
+                self.user_name.set(file_usr_name) 
 
-            self.u_name_entry = customtkinter.CTkEntry(master=self, textvariable =self.name_var)
+            self.u_name_entry = customtkinter.CTkEntry(master=self, textvariable =self.user_name)
             self.u_name_entry.place(relx =0.5, rely =0.6, anchor=customtkinter.CENTER)
 
 
@@ -92,21 +90,20 @@ if __name__ == "__main__":
         def submit(self):
 
             # Get values from GUI into strings for backend
-            self.name_out = self.name_var.get()
-            self.path_out = self.path_var.get()
-
+            self.name_out = self.user_name.get()
+            self.replay_path = self.path_var.get()
 
             # Write the name written into a file
             open('player.txt', 'w').write(self.name_out)
-
             
+            #Clears up screen
             self.p_label.destroy()
             self.p_name_entry.destroy()
 
             # Runs the actual thing
             self.sorting()
-
             self.u_label_var.set("DONE!")
+
 
         def sorting(self):
             
@@ -119,24 +116,24 @@ if __name__ == "__main__":
             user_name = str(app.name_out)
 
             # Get path
-            source = str(app.path_out)
+            replay_path = str(app.replay_path)
 
 
             # Create all directories if they do not exist
             for name in matchups:
-                if not os.path.exists(source + self.os_path + name):
-                    os.mkdir(source + self.os_path + name)
+                if not os.path.exists(replay_path + name):
+                    os.mkdir(replay_path + name)
 
-                if not os.path.exists(source+ self.os_path + "$Spectate"):
-                    os.mkdir(source + self.os_path + "$Spectate")
+                if not os.path.exists(replay_path+ "$Spectate"):
+                    os.mkdir(replay_path + "$Spectate")
 
             # Get Files
             
-            for file in glob.glob( source + '*ggr'):
+            for file in glob.glob( replay_path + '*ggr'):
 
                 # Send Spectate replays to /$Spectate folders
                 if re.search(f'^((?!{user_name}).)*$', file):
-                    shutil.copy(file, source + self.os_path + '$Spectate')
+                    shutil.copy(file, replay_path + '$Spectate')
                     print(f"Moved {file} to ./$Spectate")
                 
                 else:
@@ -145,7 +142,7 @@ if __name__ == "__main__":
                     for name in matchups:
 
                         if  re.search(f"(?<!{user_name})\({name}\)", file):
-                            shutil.copy(file, source + self.os_path + name)
+                            shutil.copy(file, replay_path + name)
                             print(f"Moved {file} to /{name}")
 
                 # Cleans the leftover files
