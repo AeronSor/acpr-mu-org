@@ -11,7 +11,7 @@
 </code>
 
 ## Windows
-<p>You can also just run the script with python but I have also provided a binary for it<p>
+<p>You can also just run the script with python but I have also provided a binary for it on Releases Page<p>
 
 ## Using it
 
