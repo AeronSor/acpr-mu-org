@@ -1,4 +1,4 @@
-<p>Accent Core Plus R Matchup Organizer<p>
+# Accent Core Plus R Matchup Organizer
 
 <img src="https://i.imgur.com/2ww87YZ.png">
 
