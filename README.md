@@ -14,7 +14,7 @@
 </code>
 
 ## Windows
-<p>You can also just run the script with python but I have also provided a binary for it on Releases Page<p>
+<p>Go to releases page anc download the 7zip file<p>
 
 ## Using it
 
