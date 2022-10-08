@@ -14,7 +14,7 @@
 </code>
 
 ## Windows
-<p>Go to releases page anc download the 7zip file<p>
+<p>Go to releases page and download the 7zip file<p>
 
 ## Using it
 
